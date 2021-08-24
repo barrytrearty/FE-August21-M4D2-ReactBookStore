@@ -37,8 +37,18 @@
   }
 } */
 
+.navbar {
+  background-color: rgb(4, 53, 32);
+  /* color: white; */
+  position: fixed;
+}
+
+.jumbo {
+  background-color: rgb(98, 231, 173);
+}
+
 footer {
-  background-color: rgba(1, 8, 5, 0.7);
+  background-color: rgba(1, 8, 5, 0.9);
   /* display: flex;
   justify-content: flex-end; */
 

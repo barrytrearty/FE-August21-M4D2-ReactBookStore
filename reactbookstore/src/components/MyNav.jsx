@@ -4,8 +4,8 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const MyNav = () => {
   return (
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">Barry's Books</Navbar.Brand>
+    <Navbar className="navbar" variant="dark">
+      <Navbar.Brand href="#home">Barry's Book Bonanza</Navbar.Brand>
       <Nav className="ml-auto">
         <Nav.Link href="#home">Home</Nav.Link>
         <Nav.Link href="#about">About</Nav.Link>

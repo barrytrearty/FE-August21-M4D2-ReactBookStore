@@ -2,10 +2,10 @@ import { Jumbotron, Container } from "react-bootstrap";
 
 const MyJumbotron = () => {
   return (
-    <Jumbotron fluid>
+    <Jumbotron fluid bg="success">
       <Container>
-        <h1>Welcome</h1>
-        <h4>Behold Barry's Big Batch of Bitchin' Books</h4>
+        <h1>BEHOLD</h1>
+        <h4> Barry's Big Bonkers Batch of Bitchin' Books</h4>
       </Container>
     </Jumbotron>
   );
