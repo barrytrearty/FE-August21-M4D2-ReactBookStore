@@ -13,7 +13,7 @@ class LatestReleases extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="bgFor">
         <ButtonGroup aria-label="Basic example">
           <Button
             onClick={() => this.setState({ selectedCategory: books1 })}
