@@ -1,27 +1,37 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-class AddComment extends Component {
-  state = {
-    comment: {
-      comment: "",
-      elementId: this.props.asin,
-      rate: 1,
-    },
-  };
+// class AddComment extends Component {
+//   state = {
+//     comment: {
+//       comment: "",
+//       elementId: this.props.asin,
+//       rate: 1,
+//     },
+//   };
+const AddComment = ({ asin }) => {
+  const [comment, setComment] = useState({
+    comment: "",
+    elementId: asin,
+    rate: 1,
+  });
 
-  componentDidUpdate = async (prevProps) => {
-    if (prevProps.asin !== this.props.asin) {
-      this.setState({
-        comment: {
-          ...this.state.comment,
-          elementId: this.props.asin,
-        },
-      });
-    }
-  };
+  useEffect(() => {
+    setComment({ ...comment, elementId: asin });
+  }, [asin]);
 
-  sendComment = async (e) => {
+  // componentDidUpdate = async (prevProps) => {
+  //   if (prevProps.asin !== this.props.asin) {
+  //     this.setState({
+  //       comment: {
+  //         ...this.state.comment,
+  //         elementId: this.props.asin,
+  //       },
+  //     });
+  //   }
+  // };
+
+  const sendComment = async (e) => {
     e.preventDefault();
     try {
       let response = await fetch(
@@ -29,7 +39,7 @@ class AddComment extends Component {
         // +  this.state.comment.elementId
         {
           method: "POST",
-          body: JSON.stringify(this.state.comment),
+          body: JSON.stringify(comment),
           headers: {
             "Content-type": "application/json",
             Authorization:
@@ -50,54 +60,50 @@ class AddComment extends Component {
     }
   };
 
-  render() {
-    return (
-      <div>
-        <Form onSubmit={this.sendComment} className="text-center">
-          <Form.Group>
-            <Form.Label>Comments</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Leave a comment"
-              value={this.state.comment.comment}
-              onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    comment: e.target.value,
-                  },
-                })
-              }
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Rating</Form.Label>
-            <Form.Control
-              as="select"
-              value={this.state.comment.rate}
-              onChange={(e) =>
-                this.setState({
-                  comment: {
-                    ...this.state.comment,
-                    rate: e.target.value,
-                  },
-                })
-              }
-            >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Form.Control>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Add
-          </Button>
-        </Form>
-      </div>
-    );
-  }
-}
+  // render() {
+  return (
+    <div>
+      <Form onSubmit={sendComment} className="text-center">
+        <Form.Group>
+          <Form.Label>Comments</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Leave a comment"
+            value={comment.comment}
+            onChange={(e) =>
+              setComment({
+                ...comment,
+                comment: e.target.value,
+              })
+            }
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Rating</Form.Label>
+          <Form.Control
+            as="select"
+            value={comment.rate}
+            onChange={(e) =>
+              setComment({
+                ...comment,
+                rate: e.target.value,
+              })
+            }
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </Form.Control>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Add
+        </Button>
+      </Form>
+    </div>
+  );
+};
+// }
 
 export default AddComment;
