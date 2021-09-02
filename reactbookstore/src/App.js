@@ -3,17 +3,22 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyNav from "./components/MyNav";
 import MyFooter from "./components/MyFooter";
-import MyJumbotron from "./components/MyJumbotron";
-import LatestReleases from "./components/LatestReleases";
+import MainSection from "./components/MainSection";
+import FormLogin from "./components/FormLogin";
+// import MyJumbotron from "./components/MyJumbotron";
+// import LatestReleases from "./components/LatestReleases";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <MyNav />
-      <MyJumbotron />
-      <LatestReleases />
-      <MyFooter />
-    </div>
+    <Router>
+      <div className="App">
+        <MyNav />
+        <Route path="/" exact component={MainSection} />
+        <Route path="/formLogin" exact component={FormLogin} />
+        <MyFooter />
+      </div>
+    </Router>
   );
 }
 

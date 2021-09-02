@@ -1,15 +1,26 @@
 // import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Navbar, Nav } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 // import { Component } from "react";
 
-const MyNav = () => {
+const MyNav = ({ location }) => {
   return (
     <Navbar className="navbar" variant="dark">
       <Navbar.Brand href="#home">Barry's Book Bonanza</Navbar.Brand>
       <Nav className="ml-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#about">About</Nav.Link>
-        <Nav.Link href="#browse">Browse</Nav.Link>
+        <Link to="/">
+          <div className="nav-link">Home</div>
+        </Link>
+        <Link to="/about">
+          <div className="nav-link">About</div>
+        </Link>
+        {location.pathname === "/formlogin" ? (
+          ""
+        ) : (
+          <Link to="/formlogin">
+            <div className="nav-link">Log Out</div>
+          </Link>
+        )}
       </Nav>
       {/*<Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -19,4 +30,4 @@ const MyNav = () => {
   );
 };
 
-export default MyNav;
+export default withRouter(MyNav);

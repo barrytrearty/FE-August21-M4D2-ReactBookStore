@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-// class AddComment extends Component {
-//   state = {
-//     comment: {
-//       comment: "",
-//       elementId: this.props.asin,
-//       rate: 1,
-//     },
-//   };
 const AddComment = ({ asin }) => {
   const [comment, setComment] = useState({
     comment: "",
@@ -18,7 +10,6 @@ const AddComment = ({ asin }) => {
 
   useEffect(() => {
     setComment({ ...comment, elementId: asin });
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asin]);
 
